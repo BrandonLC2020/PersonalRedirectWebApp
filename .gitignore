@@ -54,6 +54,9 @@ Thumbs.db
 package-lock.json
 .yarn/
 
+# Yarn
+yarn.lock
+
 # Environment
 .env
 .env.*.local
