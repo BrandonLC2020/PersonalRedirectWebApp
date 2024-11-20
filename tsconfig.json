@@ -1,0 +1,33 @@
+{
+    "compilerOptions": {
+      "target": "esnext",                      // Targets modern JavaScript features
+      "lib": ["dom", "esnext"],               // Includes DOM and latest ECMAScript libraries
+      "jsx": "react-native",                  // Enables JSX for React Native
+      "moduleResolution": "node",            // Resolves modules in Node.js style
+      "strict": true,                         // Enables all strict type-checking options
+      "noImplicitAny": true,                  // Disallows variables with `any` type
+      "module": "esnext",                     // Uses ES Modules
+      "allowSyntheticDefaultImports": true,  // Allows default imports
+      "esModuleInterop": true,               // Ensures compatibility with CommonJS modules
+      "skipLibCheck": true,                   // Skips type-checking of declaration files
+      "baseUrl": "./",                        // Sets base URL for module resolution
+      "paths": {
+        "@/*": ["src/*"]                     // Aliases `@` to the `src/` folder
+      },
+      "resolveJsonModule": true,              // Allows importing JSON files
+      "types": ["react-native", "node"],      // Includes types for React Native and Node.js
+      "strictNullChecks": true                // Ensures strict handling of null values
+    },
+    "exclude": [
+      "node_modules",                        // Excludes `node_modules` from compilation
+      "babel.config.js",                     // Excludes Babel configuration file
+      "webpack.config.js"                    // Excludes Webpack configuration file
+    ],
+    "include": [
+      "src/**/*",                            // Includes all TypeScript files in the `src/` folder
+      "App.tsx",                             // Includes the main app entry point
+      "AppEntry.js",                         // Includes the web-specific entry file,
+      "env.d.ts"
+    ]
+  }
+  

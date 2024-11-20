@@ -1,0 +1,52 @@
+{
+  "name": "personalredirectwebapp",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "start": "react-native start",
+    "android": "react-native run-android",
+    "ios": "react-native run-ios",
+    "web": "expo start --web",
+    "build:web": "expo build:web",
+    "ngrok": "ngrok http 8081",
+    "start:with-ngrok": "react-native start & yarn ngrok"
+  },
+  "dependencies": {
+    "@react-native-async-storage/async-storage": "^1.19.0",
+    "@react-navigation/native": "^6.1.7",
+    "@react-navigation/stack": "^6.10.5",
+    "react": "18.2.0",
+    "react-dom": "^18.2.0",
+    "react-native": "0.73.0",
+    "react-native-dotenv": "^3.4.11",
+    "react-native-gesture-handler": "^2.12.0",
+    "react-native-reanimated": "^3.4.0",
+    "react-native-safe-area-context": "^4.7.0",
+    "react-native-screens": "^3.25.0",
+    "react-native-web": "^0.19.9"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.23.0",
+    "@babel/runtime": "^7.23.0",
+    "@expo/webpack-config": "^18.1.1",
+    "@react-native-community/eslint-config": "^3.2.0",
+    "@types/node": "^22.9.1",
+    "@types/react": "^18.2.14",
+    "@types/react-dom": "^18.2.7",
+    "@types/react-native": "^0.73.4",
+    "eslint": "^8.50.0",
+    "eslint-config-prettier": "^9.0.0",
+    "eslint-plugin-react": "^7.33.2",
+    "ngrok": "^5.5.0",
+    "typescript": "^5.3.0"
+  },
+  "resolutions": {
+    "react-native": "0.73.0"
+  },
+  "jest": {
+    "preset": "react-native",
+    "setupFiles": [
+      "./node_modules/react-native-gesture-handler/jestSetup.js"
+    ]
+  }
+}
