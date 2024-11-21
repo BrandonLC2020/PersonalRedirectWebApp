@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
-import { View, Text, Button, StyleSheet, FlatList, Alert } from 'react-native';
+import { View, Text, Button, StyleSheet, Alert } from 'react-native';
+import InformationComponent from '../components/InformationComponent';
 
 const HomeScreen = () => {
   const [queryParams, setQueryParams] = useState<Record<string, string>>({});
@@ -22,7 +23,6 @@ const HomeScreen = () => {
       setLoading(false);
     }
   };
-  
 
   return (
     <View style={styles.container}>
@@ -36,18 +36,7 @@ const HomeScreen = () => {
         disabled={loading}
       />
       {Object.keys(queryParams).length > 0 && (
-        <View style={styles.resultsContainer}>
-          <Text style={styles.resultsTitle}>Query Parameters:</Text>
-          <FlatList
-            data={Object.entries(queryParams)}
-            keyExtractor={([key]) => key}
-            renderItem={({ item: [key, value] }) => (
-              <Text style={styles.result}>
-                {key}: {value}
-              </Text>
-            )}
-          />
-        </View>
+        <InformationComponent data={queryParams} />
       )}
     </View>
   );
@@ -71,22 +60,6 @@ const styles = StyleSheet.create({
     color: '#333',
     textAlign: 'center',
     marginBottom: 20,
-  },
-  resultsContainer: {
-    marginTop: 20,
-    width: '80%',
-    padding: 10,
-    backgroundColor: '#f9f9f9',
-    borderRadius: 5,
-  },
-  resultsTitle: {
-    fontSize: 18,
-    fontWeight: 'bold',
-    marginBottom: 10,
-  },
-  result: {
-    fontSize: 16,
-    color: '#555',
   },
 });
 
