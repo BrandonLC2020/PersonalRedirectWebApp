@@ -1,7 +1,7 @@
 import { AppRegistry, Platform } from 'react-native';
 import React from 'react';
 import App from './App';
-import { name as appName } from './app.json';
+import { name as appName } from '../app.json';
 
 if (Platform.OS === 'web') {
   // Dynamically import react-dom/client for web rendering
