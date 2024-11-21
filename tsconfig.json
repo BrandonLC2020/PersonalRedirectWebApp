@@ -25,7 +25,7 @@
     ],
     "include": [
       "src/**/*",                            // Includes all TypeScript files in the `src/` folder
-      "App.tsx",                             // Includes the main app entry point
+      "src/App.tsx",                             // Includes the main app entry point
       "AppEntry.js",                         // Includes the web-specific entry file,
       "env.d.ts"
     ]
