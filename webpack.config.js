@@ -1,45 +1,38 @@
-const createExpoWebpackConfigAsync = require('@expo/webpack-config');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+const path = require('path');
 
-module.exports = async function (env, argv) {
-  const config = await createExpoWebpackConfigAsync(env, argv);
-
-  // Customize Webpack for React Native Web and TypeScript
-  config.resolve.alias = {
-    ...(config.resolve.alias || {}),
-    'react-native$': 'react-native-web',
-    '@env': 'react-native-dotenv', // Alias for environment variables
-  };
-
-  // Support for .env files
-  config.plugins.push(
-    new require('dotenv-webpack')({
-      path: '.env',
-      safe: false,
-      allowEmptyValues: true,
-    })
-  );
-
-  // Add support for TypeScript files
-  config.resolve.extensions = [
-    ...config.resolve.extensions,
-    '.web.ts',
-    '.web.tsx',
-    '.ts',
-    '.tsx',
-  ];
-
-  // Additional rules for TypeScript
-  config.module.rules.push({
-    test: /\.tsx?$/,
-    use: [
+module.exports = {
+  entry: './src/index.tsx', // Entry point adjusted to src directory
+  output: {
+    path: path.resolve(__dirname, 'dist'),
+    filename: 'bundle.js',
+  },
+  resolve: {
+    extensions: ['.tsx', '.ts', '.js'],
+  },
+  module: {
+    rules: [
       {
-        loader: 'ts-loader',
-        options: {
-          transpileOnly: true,
-        },
+        test: /\.(ts|tsx)$/,
+        exclude: /node_modules/,
+        use: 'babel-loader',
+      },
+      {
+        test: /\.css$/,
+        use: ['style-loader', 'css-loader'],
       },
     ],
-  });
-
-  return config;
+  },
+  plugins: [
+    new HtmlWebpackPlugin({
+      template: './index.html', // Uses your index.html file as a template
+    }),
+  ],
+  devServer: {
+    static: {
+      directory: path.join(__dirname, 'dist'),
+    },
+    compress: true,
+    port: 3000,
+  },
 };
