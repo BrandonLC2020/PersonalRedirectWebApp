@@ -1,20 +1,21 @@
-module.exports = {
-    presets: [
-      'module:metro-react-native-babel-preset', // Default React Native preset
-      '@babel/preset-typescript' // TypeScript support
-    ],
+module.exports = function (api) {
+  api.cache(true);
+  return {
+    presets: ['babel-preset-expo'],
     plugins: [
       [
-        'module:react-native-dotenv',
+        'module-resolver',
         {
-          moduleName: '@env',
-          path: '.env', // Path to your environment file
-          safe: false,
-          allowUndefined: true
-        }
+          alias: {
+            '@assets': './src/assets',
+            '@components': './src/components',
+            '@screens': './src/screens',
+            '@navigation': './src/navigation',
+            '@utils': './src/utils',
+          },
+        },
       ],
-      '@babel/plugin-proposal-export-namespace-from', // Optional plugin for clean exports
-      '@babel/plugin-proposal-class-properties' // Support for class properties
-    ]
+      'react-native-reanimated/plugin'
+    ],
   };
-  
+};

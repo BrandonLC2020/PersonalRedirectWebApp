@@ -1,21 +1,27 @@
 {
   "expo": {
     "name": "PersonalRedirectWebApp",
-    "slug": "PersonalRedirectWebApp",
+    "slug": "personal-redirect-web-app",
     "version": "1.0.0",
     "orientation": "portrait",
+    "platforms": ["ios", "android", "web"],
+    "entryPoint": "./src/index.tsx",
     "icon": "./assets/icon.png",
-    "userInterfaceStyle": "light",
-    "newArchEnabled": true,
     "splash": {
-      "image": "./assets/splash-icon.png",
+      "image": "./assets/splash.png",
       "resizeMode": "contain",
       "backgroundColor": "#ffffff"
     },
+    "updates": {
+      "fallbackToCacheTimeout": 0
+    },
+    "assetBundlePatterns": ["**/*"],
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "bundleIdentifier": "com.yourname.personalredirectwebapp"
     },
     "android": {
+      "package": "com.yourname.personalredirectwebapp",
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#ffffff"
