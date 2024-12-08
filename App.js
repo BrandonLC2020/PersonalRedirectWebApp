@@ -29,16 +29,16 @@ const App = () => {
   }, []);
 
 
-  useEffect(() => {
-    const socket = io(process.env.NGROK_URL);
+  // useEffect(() => {
+  //   const socket = io(process.env.NGROK_URL);
   
-    socket.on('newRequest', (data) => {
-      console.log('Received new request:', data);
-      setApiCalls((prevApiCalls) => [data, ...prevApiCalls]);
-    });
+  //   socket.on('newRequest', (data) => {
+  //     console.log('Received new request:', data);
+  //     setApiCalls((prevApiCalls) => [data, ...prevApiCalls]);
+  //   });
   
-    return () => socket.disconnect();
-  }, []);
+  //   return () => socket.disconnect();
+  // }, []);
   
   return (
     <div style={{ padding: "16px" }}>
