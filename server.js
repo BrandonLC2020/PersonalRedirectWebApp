@@ -15,9 +15,30 @@ app.post('/api/webhook', (req, res) => {
 });
 
 // Route to fetch ngrok URL
-app.get('/ngrok-url', (req, res) => {
-  res.send({ url: process.env.NGROK_URL });
+app.get('/api/test', (req, res) => {
+  // Extract query parameters
+  const queryParams = req.query;
+
+  // Log the query parameters to the console
+  console.log('Received Query Parameters:', queryParams);
+
+  // Send a response
+  res.status(200).json({
+    message: 'Query parameters received successfully!',
+    queryParams: queryParams,
+  });
+
+  // Emit the data to the frontend via WebSocket
+  if (io) {
+    io.emit('newRequest', {
+      method: 'GET',
+      endpoint: req.url,
+      queryParams: queryParams,
+      timestamp: new Date().toISOString(),
+    });
+  }
 });
+
 
 // Start the server and ngrok tunnel
 app.listen(PORT, async () => {

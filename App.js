@@ -28,6 +28,18 @@ const App = () => {
     fetchApiCalls();
   }, []);
 
+
+  useEffect(() => {
+    const socket = io(process.env.NGROK_URL);
+  
+    socket.on('newRequest', (data) => {
+      console.log('Received new request:', data);
+      setApiCalls((prevApiCalls) => [data, ...prevApiCalls]);
+    });
+  
+    return () => socket.disconnect();
+  }, []);
+  
   return (
     <div style={{ padding: "16px" }}>
       <h1>API Call Monitor</h1>
