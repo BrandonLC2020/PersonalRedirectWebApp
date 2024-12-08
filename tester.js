@@ -5,7 +5,7 @@ const ngrokUrl = process.env.NGROK_URL;
 
 const testRedirectCall = async () => {
   try {
-    const response = await axios.get(`${ngrokUrl}/api/test`, {
+    const response = await axios.get(`${ngrokUrl}/`, {
       params: {
         param1: 'value1',
         param2: 'value2',
